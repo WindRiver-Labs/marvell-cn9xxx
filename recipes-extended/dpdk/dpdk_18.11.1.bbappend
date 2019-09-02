@@ -194,6 +194,7 @@ SRC_URI_append_marvell-cn96xx = " \
 	file://0152-eal-increase-max-number-of-interrupt-vectors.patch \
 	file://0153-net-octeontx2-Hard-code-the-max-supported-MAC-entrie.patch \
 	file://0154-usertools-add-octeontx2-SSO-and-NPA-PCIe-devices.patch \
+	file://0001-mempool-octeontx2-fix-possible-arm64-ABI-break.patch \
 "
 
 DEPENDS_append_marvell-cn91xx = " musdk-marvell libpcap"

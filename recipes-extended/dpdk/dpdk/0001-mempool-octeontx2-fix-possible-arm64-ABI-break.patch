@@ -1,0 +1,35 @@
+From 5b40ec6b966260e0ff66a8a2c689664f75d6a0e6 Mon Sep 17 00:00:00 2001
+From: Pavan Nikhilesh <pbhagavatula@marvell.com>
+Date: Thu, 18 Jul 2019 12:21:11 +0530
+Subject: [PATCH] mempool/octeontx2: fix possible arm64 ABI break
+
+Since direct register access is used in npa_lf_aura_op_alloc_bulk()
+use __rte_noinline instead of __rte_always_inline to preserve ABI.
+Based on the compiler npa_lf_aura_op_alloc_bulk might be inlined
+differently which may lead to undefined behaviour due to handcoded
+asm.
+
+Fixes: 29893042c29d ("mempool/octeontx2: fix clang build for arm64")
+
+Signed-off-by: Pavan Nikhilesh <pbhagavatula@marvell.com>
+Acked-by: Jerin Jacob <jerinj@marvell.com>
+---
+ drivers/mempool/octeontx2/otx2_mempool_ops.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/mempool/octeontx2/otx2_mempool_ops.c b/drivers/mempool/octeontx2/otx2_mempool_ops.c
+index a60a77a4e182..ff63be567581 100644
+--- a/drivers/mempool/octeontx2/otx2_mempool_ops.c
++++ b/drivers/mempool/octeontx2/otx2_mempool_ops.c
+@@ -54,7 +54,7 @@ npa_lf_aura_op_search_alloc(const int64_t wdata, int64_t * const addr,
+ 	return 0;
+ }
+ 
+-static __rte_always_inline int
++static __rte_noinline int
+ npa_lf_aura_op_alloc_bulk(const int64_t wdata, int64_t * const addr,
+ 			  unsigned int n, void **obj_table)
+ {
+-- 
+2.14.4
+
