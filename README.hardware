@@ -86,4 +86,4 @@ in a different environment it may possibly have some issues.
 	Board Revision: 	R1P1
 	Board Serial:   	CN96xx-CRB-R1P1-0043
 	BootLoader:		U-Boot
-	BootLoader Version:	2018.03-2.0.0 (May 07 2019 - 11:51:06 +0000), Build: cs-SDK10.0-ED1001
+	BootLoader Version:	U-Boot 2019.10-devel-gc349145ab183 (Sep 19 2020 - 09:07:00 +0800)
