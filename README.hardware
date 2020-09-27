@@ -56,7 +56,7 @@ The following BSP features are validated and supported.
 
 	o Storage
 		+ Micso SD card
-		+ 2x 32M SPI Flash
+		+ 2x 32M SPI Flash(MX25L256*)
 
 	o Misc Devices
 		+ GPIO
