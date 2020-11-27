@@ -20,10 +20,8 @@ This BSP supports the following boards:
 2. Change History
 =================
 
-  - 2019/08 (LINUXPG-20): Wind River Linux 10.18 RCPL09, add CN96xx support based
-			  on Marvell SDK10.0-ED1001 CN96xx Only
-  - 2019/07 (LINUXPG-21): Wind River Linux 10.18 RCPL08, Standard support based
-			  on Marvell SDK10.0_19.06.0
+  - 2019/10 (LINUXPG-102): Wind River Linux 10.19, add CN96xx support based
+			   on Marvell SDK10
 
 3. BSP Notes
 ============
