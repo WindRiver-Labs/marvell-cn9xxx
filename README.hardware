@@ -44,6 +44,8 @@ The following BSP features are validated and supported.
 
 	o Network
 		+ Ethernet:
+			+ 1x QSFP28
+			+ 4x SFP28
 			+ 2x SFP28 direct connection
 			+ 1x 10GBase-T copper connection
 			+ 1x 1G AX88179 USB to Ethernet
@@ -55,6 +57,9 @@ The following BSP features are validated and supported.
 	o Storage
 		+ Micso SD card
 		+ 2x 32M SPI Flash(MX25L256*)
+
+	o Power Management
+		+ CPU Freq
 
 	o Misc Devices
 		+ GPIO
@@ -70,9 +75,6 @@ The following BSP features are validated and supported.
 The following features are not supported or validated.
 
 	x eMMC card: 1x eMMC 4 GB device
-	x CPU Freq
-	x 1x QSFP28
-	x 4x SFP28
 
 3.1.3 Validated Board Info
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
