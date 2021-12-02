@@ -16,12 +16,15 @@ Table of Contents
 This BSP supports the following boards:
 
   + Marvell CN96XX-CRB board, Board Revision: R1P1
+  + Marvell CN9130 development board, SoC: cn9130-A1; AP807-B0; 3xCP115-A0
 
 2. Change History
 =================
 
   - 2019/10 (LINUXPG-102): Wind River Linux 10.19, add CN96xx support based
 			   on Marvell SDK10
+  - 2021/11 (LIN1019-5769): Wind River Linux 10.19 RCPL21, add CN91xx support based
+			   on Marvell SDK11
 
 3. BSP Notes
 ============
@@ -87,3 +90,70 @@ in a different environment it may possibly have some issues.
 	Board Serial:   	CN96xx-CRB-R1P1-0043
 	BootLoader:		U-Boot
 	BootLoader Version:	U-Boot 2019.10-devel-gc349145ab183 (Sep 19 2020 - 09:07:00 +0800)
+
+
+
+3.2 Marvell CN9130
+------------------
+3.2.1 Supported Features
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The following BSP features are validated and supported.
+
+	o Bus
+		+ I2C:
+			+ I2C Master interface
+		+ PCI-Express:
+			+ 1x PCIe x4 Gen 3.0
+		+ SDIO: SDIO Host Controller
+
+	o Network
+		+ Ethernet:
+			+ 2x 1G Ethernet port via RGMII
+			+ 1x 10G Ethernet port over SFP+ connector
+
+	o USB
+		+ USB XHCI controller:
+			+ 2x USB 2.0 Host port
+
+	o Storage
+		+ eMMC card: 1x eMMC 8 GB device
+		+ Micso SD card:
+		+ SATA: SATA 3.0 port
+			+ 1x SATA port
+
+	o Misc Devices
+		+ GPIO
+		+ IOMMU
+		+ RTC
+		+ SEC Engine: Suite-B compatible security engine
+		+ Temperature sensor
+		+ UART: 8250/16550A compatible serial port
+		+ Watchdog
+
+3.2.2 Unsupported Features
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The following features are not supported or validated.
+
+	x CPU Freq
+	x DMA Engine
+	x EDAC
+	x I2S
+	x Nand Flash: 1 NAND 1 GB Flash memory
+	x SPI Flash: 1x 128 Mb SPI NOR Flash memory
+	x Suspend
+	x TDM: Time-Division Multiplexing controller
+	x CPU Hotplug
+	x Kexec/Kdump
+
+3.2.3 Validated Board Info
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This BSP is only validated in following environment. If you use this BSP
+in a different environment it may possibly have some issues.
+
+	SoC:  cn9130-A1; AP807-B0; 3xCP115-A0
+	Board: Marvell CN9130 development board (CP NOR) setup(A)
+	BootLoader:		U-Boot
+	BootLoader Version:	U-Boot 2020.10-6.0.0 (Nov 08 2021 - 20:12:28 +0800)

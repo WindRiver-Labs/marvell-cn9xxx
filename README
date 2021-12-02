@@ -49,7 +49,7 @@ The following table summarizes the valid Wind River Linux distros for this BSP.
 For the supported kernel type for this BSP, please check the TARGET_SUPPORTED_KTYPES
 by running 'bitbake -e virtual/kernel | grep "^TARGET_SUPPORTED_KTYPES="'.
 
-Note: The preempt-rt ktype is available for this BSP/Machine.
+Note: The preempt-rt ktype is only available for marvell-cn96xx machine.
 
 
 3. Board Specific Patches
@@ -98,9 +98,11 @@ settings.  Since these macros exist as env variables themselves, they
 may or may not be present depending on who installed and configured
 u-boot for the board.
 
-The console device for the board is ttyAMA0 at 115200 baud. The load address
-must be high enough to not interfere with kernel decompression.  A value of
-0x040080000 was used with success for all kernels tested by Wind River.
+The console device for the board is ttyS0(cn91xx) and ttyAMA0(cn96xx) at
+115200 baud. For the DTB address, 0x6f00000(cn91xx) was used with success
+by Wind River. The load address must be high enough to not interfere with
+kernel decompression.  A value of 0x040080000(cn96xx) and 0x7000000(cn91xx)
+was used with success for all kernels tested by Wind River.
 
 4.1 NFS Root File System
 ------------------------
@@ -131,7 +133,7 @@ baudrate=115200
 ============
 Please refer to the Yocto manual for the detailed info about WIC. After building
 the project, the WIC image is at:
-   tmp-glibc/deploy/images/marvell-cn96xx/wrlinux-image-glibc-std-<machine name>.wic
+   tmp-glibc/deploy/images/<machine name>/wrlinux-image-glibc-std-<machine name>.wic
 
 Then user can burn this image to a SD card.
 
@@ -151,3 +153,12 @@ Then user can burn this image to a SD card.
         sudo dd if=octeontx-bootfs-uboot-t96.img of=/dev/your_sd_dev bs=512 seek=128 skip=128 conv=fsync
 
     Please ask the Marvell for the cn96xx boot firmware image.
+
+5.3 Set uboot env for cn91xx
+----------------------------
+    # setenv loadaddr 0x7000000
+    # setenv fdtaddr 0x6f00000
+    # fatload mmc 1 $loadaddr Image
+    # fatload mmc 1 $fdtaddr cn9130-db.dtb
+    # setenv bootargs console=ttyS0,115200 root=/dev/mmcblk1p2 pci=pcie_bus_safe cpuidle.off=1 rootwait
+    # booti $loadaddr - $fdtaddr
