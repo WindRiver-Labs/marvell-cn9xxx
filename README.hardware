@@ -40,7 +40,6 @@ The following BSP features are validated and supported.
 		+ PCI-Express:
 			+ 1x PCIe x8 Gen4
 			+ 1x Mini PCIe
-			+ 1x NVMe x4
 
 	o Network
 		+ Ethernet:
